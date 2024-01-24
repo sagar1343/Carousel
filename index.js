@@ -27,3 +27,5 @@ const nextbtn = document.querySelector(".next");
 nextbtn.addEventListener("click", () => next());
 const prevbtn = document.querySelector(".prev");
 prevbtn.addEventListener("click", () => prev());
+
+setInterval(next, 6000);
