@@ -1,5 +1,10 @@
 let currentSlideIndex = 1;
 const totalSlide = 3;
+let timeout;
+function slideShow() {
+  clearInterval(timeout);
+  timeout = setTimeout(next, 3000);
+}
 function next() {
   let nextSlideIndex = currentSlideIndex + 1;
   const currentSlide = document.getElementById(currentSlideIndex);
@@ -10,6 +15,7 @@ function next() {
   currentSlide.classList.remove("active");
   nextSlide.classList.add("active");
   currentSlideIndex = nextSlideIndex;
+  slideShow();
 }
 function prev() {
   let prevSlideIndex = currentSlideIndex - 1;
@@ -21,11 +27,11 @@ function prev() {
   currentSlide.classList.remove("active");
   prevSlide.classList.add("active");
   currentSlideIndex = prevSlideIndex;
+  slideShow();
 }
 
 const nextbtn = document.querySelector(".next");
 nextbtn.addEventListener("click", () => next());
 const prevbtn = document.querySelector(".prev");
 prevbtn.addEventListener("click", () => prev());
-
-setInterval(next, 6000);
+slideShow();
